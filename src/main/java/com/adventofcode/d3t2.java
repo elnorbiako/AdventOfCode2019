@@ -61,7 +61,7 @@ public class d3t2 {
         for (Point value : pointsA) {
             if (intersectPoints.contains(value)) {
                 stepsToInterA.add(stepCounterA);
-                coordinatesOfIntersectA.add("X:" + value.x + " Y:" + value.y + " Steps:" + stepCounterA);
+                coordinatesOfIntersectA.add("X:" + value.x + " Y:" + value.y + " Steps:" + stepCounterA + " ***");
             }
             stepCounterA++;
         }
@@ -69,7 +69,7 @@ public class d3t2 {
         for (Point point : pointsB) {
             if (intersectPoints.contains(point)) {
                 stepsToInterB.add(stepCounterB);
-                coordinatesOfIntersectB.add("X:" + point.x + " Y:" + point.y + " Steps:" + stepCounterB);
+                coordinatesOfIntersectB.add("X:" + point.x + " Y:" + point.y + " Steps:" + stepCounterB + " ***");
             }
             stepCounterB++;
         }
