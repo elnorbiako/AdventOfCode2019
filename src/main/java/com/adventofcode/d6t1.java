@@ -1,7 +1,6 @@
 package com.adventofcode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class d6t1 {
 
@@ -1007,17 +1006,43 @@ public class d6t1 {
             sum += orbitCount(graph, entry.getKey());
         }
 
-        System.out.println(orbitRecur(graph, "CYJ", 0));
-        System.out.println(sum);
+        List<String> orbitsSanta = new ArrayList<>();
+        List<String> orbitsMe = new ArrayList<>();
+
+        orbitsSanta = orbitListRecur(graph, "SAN", orbitsSanta);
+        orbitsMe = orbitListRecur(graph, "YOU", orbitsMe);
+
+        ArrayList<String> commonOrbits = new ArrayList<>(orbitsMe);
+
+        commonOrbits.retainAll(orbitsSanta);
+
+
+        System.out.println(orbitRecur(graph, "YOU", 0));
+        System.out.println(orbitRecur(graph, "SAN", 0));
+
+        System.out.println(orbitsMe);
+        System.out.println(orbitsSanta);
+        System.out.println(commonOrbits.size());
+        System.out.println("*********");
+
+        System.out.println( (orbitsMe.size() - commonOrbits.size()) + (orbitsMe.size() - commonOrbits.size()) - 1 );
+
+        //331 too high *** 330 too high *** 329 too high
 
     }
 
-    public static int orbitRecur(Map<String,String> graph, String currentNode, int oorbitCounter){
-        if(currentNode.equals("COM")) return oorbitCounter;
-        return orbitRecur(graph, graph.get(currentNode), oorbitCounter + 1);
+    public static int orbitRecur(Map<String,String> graph, String currentNode, int orbitCounter){
+        if(currentNode.equals("COM")) return orbitCounter;
+        return orbitRecur(graph, graph.get(currentNode), orbitCounter + 1);
     }
 
     public static int orbitCount(Map<String,String> graph, String node){
         return orbitRecur(graph, node, 0);
+    }
+
+    public static List<String> orbitListRecur(Map<String,String> graph, String currentNode, List<String> orbits){
+        if(currentNode.equals("COM")) return orbits;
+        orbits.add(currentNode);
+        return orbitListRecur(graph, graph.get(currentNode), orbits);
     }
 }
