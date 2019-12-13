@@ -1,8 +1,6 @@
 package com.adventofcode;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class d4t1 {
 
@@ -35,8 +33,7 @@ public class d4t1 {
 
     }
 
-    public static boolean ifTriple (int psswrd) {
-
+    public static boolean ifSolePair (int psswrd) {
         int temp = psswrd;
         ArrayList<Integer> digits = new ArrayList<>();
         while (temp > 0) {
@@ -46,16 +43,17 @@ public class d4t1 {
 
         Collections.reverse(digits);
 
-       boolean ifTriple = false;
+       Map<Integer, Integer> digitsCount = new HashMap<>();
 
-        for (int i = 2; i < digits.size(); i++) {
-            if (digits.get(i).equals(digits.get(i - 1)) && digits.get(i).equals(digits.get(i - 2))) {
-                ifTriple = true;
-                break;
+        for (int i = 0; i < digits.size(); i++) {
+            if(digitsCount.containsKey(digits.get(i))) {
+                digitsCount.replace(digits.get(i), digitsCount.get(digits.get(i))+1);
+            } else {
+                digitsCount.put(digits.get(i), 1);
             }
         }
 
-        return ifTriple;
+        return digitsCount.containsValue(2);
 
     }
 
@@ -74,15 +72,14 @@ public class d4t1 {
         }
 
         for (Integer psswrd: correctPasswords) {
-            if (!ifTriple(psswrd)) {
+            if (ifSolePair(psswrd)) {
                 correctPasswordsWithoutTriples.add(psswrd);
             }
         }
 
-        //System.out.println(correctPasswords.size());
-        //System.out.println(correctPasswordsWithoutTriples.size());
+        System.out.println(correctPasswords.size());
+        System.out.println(correctPasswordsWithoutTriples.size());
 
-        System.out.println();
     }
 
 }
