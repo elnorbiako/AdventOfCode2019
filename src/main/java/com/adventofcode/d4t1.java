@@ -45,11 +45,11 @@ public class d4t1 {
 
        Map<Integer, Integer> digitsCount = new HashMap<>();
 
-        for (int i = 0; i < digits.size(); i++) {
-            if(digitsCount.containsKey(digits.get(i))) {
-                digitsCount.replace(digits.get(i), digitsCount.get(digits.get(i))+1);
+        for (Integer digit : digits) {
+            if (digitsCount.containsKey(digit)) {
+                digitsCount.replace(digit, digitsCount.get(digit) + 1);
             } else {
-                digitsCount.put(digits.get(i), 1);
+                digitsCount.put(digit, 1);
             }
         }
 
