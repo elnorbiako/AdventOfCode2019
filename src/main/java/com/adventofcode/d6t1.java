@@ -990,7 +990,7 @@ public class d6t1 {
                 "5WX)NQY\n" +
                 "QNF)T33\n" +
                 "CYJ)6VH\n" +
-                "NTG)MFS\n";
+                "NTG)MFS";
 
         String[] lines = input.split("\n");
 
@@ -1025,9 +1025,10 @@ public class d6t1 {
         System.out.println(commonOrbits.size());
         System.out.println("*********");
 
-        System.out.println( (orbitsMe.size() - commonOrbits.size()) + (orbitsMe.size() - commonOrbits.size()) - 1 );
+        System.out.println( (orbitsMe.size() - commonOrbits.size()) + (orbitsSanta.size() - commonOrbits.size()) - 2 );
 
         //331 too high *** 330 too high *** 329 too high
+        //256 wrong
 
     }
 
